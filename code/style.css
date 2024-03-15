@@ -171,12 +171,6 @@ footer {
 }
 
 /*Bar chart Page*/
-#piechart {
-  float: right;
-  margin-top: 5em;
-  margin-right: 30px;
-}
-
 #svgFemale {
   transform: rotate(90deg);
   float: left;
