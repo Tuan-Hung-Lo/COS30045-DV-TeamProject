@@ -147,3 +147,31 @@ footer {
     margin: 2rem auto;
     overflow-wrap: break-word;
 }
+
+/*Chart Description*/
+.chart-description {
+    text-align: center;
+    color: #435b59;
+    max-width: 60vw;
+    width: 100%;
+    overflow: wrap;
+    margin: 2em auto;
+}
+
+/*Bar chart Page*/
+#barchart {
+    float: left;
+    margin-top: 2em;
+    margin-left: 30px;
+}
+
+#piechart {
+    float: right;
+    margin-top: 2em;
+    margin-right: 30px;
+}
+
+/*Line chart Page*/
+
+/*Map Page*/
+
