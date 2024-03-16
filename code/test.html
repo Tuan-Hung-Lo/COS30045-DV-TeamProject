@@ -11,7 +11,7 @@
     <title>Tornado Chart</title>
 
     <script src="https://d3js.org/d3.v7.min.js"></script>
-    <script src="barchart.js"></script>
+    <script src="tornadochart.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -46,33 +46,21 @@
             </em>
         </p>
         <div id="yearButtons">
-            <button class="year-button" onclick="updateData(2018)">2018</button>
-            <button class="year-button" onclick="updateData(2019)">2019</button>
-            <button class="year-button" onclick="updateData(2020)">2020</button>
-            <button class="year-button" onclick="updateData(2021)">2021</button>
-            <button class="year-button" onclick="updateData(2022)">2022</button>
+            <button onclick="updateData(2018)">2018</button>
+            <button onclick="updateData(2019)">2019</button>
+            <button onclick="updateData(2020)">2020</button>
+            <button onclick="updateData(2021)">2021</button>
+            <button onclick="updateData(2022)">2022</button>
         </div>
-        <div class="charts">
-            <div id="full-tornado-chart">
-                <h3>Comparison of the total immigrants by gender in</h3>
-                <div id="tornado-chart">
-                    <svg id="svgMale"></svg>
-                    <svg id="svgFemale"></svg>
-                </div>
-                <div id="tornado-chart-legend">
-                    <p>hehe</p>
-                </div>
+        <div id="tornado-chart">
+            <svg id="svgMale"></svg>
+            <svg id="svgFemale"></svg>
+            <div id="tornado-chart-legend">
+                <p></p>
             </div>
-            <div id="full-pie-chart">
-                <h3>% Grant Total of Male and Female</h3>
-                <div id="pie-chart">
-                    <svg id="svgPie"></svg>
-                </div>
-                <div id="pie-chart-legend">
-                    <rect class="maleRect"></rect><p>Male</p>
-                    <p><rect class="femaleRect"> Female</p>
-                </div>
-            </div>
+        </div>
+        <div id="pie-chart">
+            <svg id="svgPie"></svg>
         </div>
     </main>
     <footer>&#169; Copyright 2024 - Swinburne University of Technology - Semester 1 2024</footer>

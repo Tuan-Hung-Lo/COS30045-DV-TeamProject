@@ -2,13 +2,17 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: #e1eae7;
+  background-color: #E1EAE7;
 }
 
 body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+main {
+  margin-bottom: 12vh;
 }
 
 /* Navigation bar */
@@ -43,7 +47,7 @@ nav ul {
 .active,
 .active img,
 .active a {
-  background-color: #e1eae7 !important;
+  background-color: #E1EAE7 !important;
   color: #435b59 !important;
 }
 
@@ -134,7 +138,6 @@ footer {
 .home-grid-item {
   background-color: #435b59;
   color: white;
-  border: 1px solid rgba(0, 0, 0, 0.8);
   padding: 0.5rem 1rem;
   border-radius: 15px;
   box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.4);
@@ -170,17 +173,112 @@ footer {
   margin: 2em auto;
 }
 
-/*Bar chart Page*/
+/*Tornado chart Page*/
+#yearButtons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2em auto;
+}
+
+#yearButtons button {
+  background-color: #435b59;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 15px;
+  box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.4);
+  margin: 0 1rem;
+  font-size: 1.25rem;
+  border: none;
+  cursor: pointer;
+}
+
+#yearButtons button:hover {
+  background-color: #c99e39;
+}
+
 #svgFemale {
-  transform: rotate(90deg);
-  float: left;
-  margin-top: 5em;
+  float: right;
+  width: fit-content;
+  margin-top: 2em;
+  background-color: white;
 }
 
 #svgMale {
-  transform: rotate(-90deg);
   float: left;
-  margin-top: 5em;
+  width: fit-content;
+  margin-top: 2em;
+  background-color: white;
+}
+
+#tornado-chart {
+  float: left;
+  width: max-content;
+  margin-right: 2vw;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  height: 350px;
+}
+
+#full-tornado-chart{
+  display: flex;
+  width: fit-content;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 2em 1em;
+  padding: 0.5rem 1rem;
+  border-radius: 15px;
+  box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.4);
+  background-color: white;
+}
+
+#full-tornado-chart h3, #full-tornado-chart p {
+  background-color: white;
+}
+
+#pie-chart {
+  float: right;
+  width: max-content;
+  margin-left: 2vw;
+  background-color: white;
+  height: 350px;
+}
+
+#svgPie {
+  margin-top: 2em;
+  background-color: white;
+}
+
+#full-pie-chart{
+  display: flex;
+  justify-content: center;
+  width: fit-content;
+  align-items: center;
+  flex-direction: column;
+  margin: 2em 1em;
+  padding: 0.5rem 1rem;
+  border-radius: 15px;
+  box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.4);
+  background-color: white;
+}
+
+#full-pie-chart h3, #full-pie-chart p {
+  background-color: white;
+}
+
+.maleRect {
+  width: 10px;
+  height: 10px;
+  fill: #435b59;
+}
+
+.charts {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2em auto;
 }
 
 /*Line chart Page*/
