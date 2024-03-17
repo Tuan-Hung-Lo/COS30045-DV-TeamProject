@@ -1,0 +1,109 @@
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href='./css/main.css' />
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script src="script/map.js"></script>
+    <script src="script/line.js"></script>
+    <script src="script/bar.js"></script>
+    <script src="script/sankeyChart.js"></script>
+    <script src="https://unpkg.com/d3-sankey@0.12.3/dist/d3-sankey.min.js"></script>     <!-- Plugin for sankey -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous" /> <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <title>Migration</title>
+</head>
+<body>
+
+    
+    <div class ="intro"> 
+        <div >
+            <h1>Migration</h1>
+            <p>Explore Australian migration rate statistics on our website. Gain insights into migration trends and patterns in Australia. Discover the stories behind the numbers. Join us in analyzing the dynamics of Australian migration.</p>    
+        </div>
+    </div>
+    <div id = "bd-chart">
+        <!-- Choropleth and bar chart -->
+        <section class="rounded-section">
+            <div class = "visualisation container-fluid" >
+                <select class = "select-map"> <!-- bar chart -->
+                    <option value ="Arrival">Arrivals</option>
+                    <option value ="Departure" >Departures</option>
+                </select>
+                <p class = "brief-vis ">Explore Australian migration rate statistics through our interactive heatmap and detailed bar charts. Click on a region to reveal the arrival and departure rates from 2004 to 2021 for that specific region. Click outside the heatmap to access statistics on the overall migration pattern in Australia.</p>
+               
+                <div class="row">
+                    <div class = "col chart">
+                        <h3 class = "title-map">Arrivals to Australia in 2021</h3> <!-- drop-down to select direction of migration  -->
+                        <div class="map">
+                        </div>
+                    </div>
+                    <div class = "col chart">
+                        <h3 class = "title-bar">Title</h3> <!-- bar chart -->
+                        <div class="barchart">
+                        </div>
+                </div>
+                </div>
+                <section id="timeline" class="row align-items-center height-cap"> <!-- timeline --> 
+                    <button onclick="timelinePlay()"  class="col-auto p-0 px-2 m-0  "><span class="play bi bi-play-fill"></span></button> <!-- solution for timeline is inspired by https://github.com/karanshah0206/COS30045 -->
+                    <p class="col-auto py-0 px-2 m-0 leftBorder">2004</p>
+                    <input oninput="timelineUpdate()" onchange="firstChartUpdate()" type="range" name="year" id="year" class="col p-0 m-0" min="2004" max="2021" value="2021">
+                    <p class="col-auto py-0 px-2 m-0 rightBorder">2021</p>
+                    <p id="yearLabel" class="col-auto py-0 px-3 m-0">2021</p>
+                </section>
+            </div>
+        </section>
+        <!-- Snakey diagram -->
+        <section class="rounded-section">
+            <div class = "visualisation container-fluid" >
+                <p class = "brief-vis ">Discover our interactive chart mapping the top 10 origin countries of immigrants to Australian regions. With a timeline feature, switch between different timelines to observe changing patterns over time. Discover the cultural diversity within regions and uncover the stories behind Australia's multicultural tapestry. You can click on a node to exclusively view its related information.</p>
+                <div class = "row chart">
+                    <h3 class = "title-sankey">Top 10 countries migration to Australia from 2004 to 2009</h3>
+                    <div class="sankey-chart">
+                    </div>
+                </div>
+                
+                <div id="buttons" class="row "> <!-- button to choose which period -->
+                    <button type="button" onclick="sankeyUpdate(1)" class="sankey-1 sankey-btn btn btn-outline-secondary col active">2004 - 2009</button>
+                    <button type="button" onclick="sankeyUpdate(2)" class="sankey-2 sankey-btn col btn btn-outline-secondary">2010 - 2015</button>
+                    <button type="button" onclick="sankeyUpdate(3)" class="sankey-3 sankey-btn col btn btn-outline-secondary">2016 - 2021</button>
+                </div>
+            </div>
+        </section>
+        <!-- line chart -->
+        <section class="rounded-section">
+            <div class = "visualisation container-fluid" >
+                <p class = "brief-vis ">Explore the total arrivals to Australia by visa type from 2004 to 2009 through our interactive line chart. The chart provides a regional breakdown, allowing you to analyze migration patterns across different parts of Australia. Gain more details into the popularity of various visa categories and understand how different regions have attracted foreign migrants</p>
+                <select class = "select-state"> <!-- drop-down for state -->
+                    <option value ="Australia">Australia</option>
+                    <option value ="Australian Capital Territory">Australian Capital Territory</option>
+                    <option value ="New South Wales">New South Wales</option>
+                    <option value ="Northern Territory">Northern Territory</option>
+                    <option value ="Queensland">Queensland</option>
+                    <option value ="South Australia">South Australia</option>
+                    <option value ="Tasmania">Tasmania</option>
+                    <option value ="Victoria">Victoria</option>
+                    <option value ="Western Australia">Western Australia</option>
+                </select>
+                <div class = "row chart">
+                    <h3 class = "title-line">Total Arrivals to Australia based on types of visa holders from 2004 to 2009</h3>
+                    
+                    <div class="linechart">
+                        
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer class="container">
+            <ul class="nav justify-content-center border-bottom">
+              <li class="nav-item"><span class="nav-link px-2 text-muted">Gia Hung Tran - 103509199</span></li>
+              <li class="nav-item"><span class="nav-link px-2 text-muted"> Thao Ngan Ngo - 104055130</span></li>
+            </ul>
+            <p class="text-center text-muted">COS30045 - Data Visualisation | Semester 1 2023 | Swinburne University of Technology</p>
+        </footer>
+    
+    </div>
+   
+    <script src="script/main.js"></script>
+</body>
