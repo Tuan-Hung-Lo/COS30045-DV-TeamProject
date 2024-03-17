@@ -13,35 +13,14 @@ function updateData(year) {
 
             // Add X axis
             const x = d3.scaleLinear()
-                .domain([0, d3.max(filteredData, function(d) { return Math.max(+d.Female, +d.Male); })])
+                .domain([0, d3.max(filteredData, function (d) { return Math.max(+d.Female, +d.Male); })])
                 .range([0, width - padding]);
-            
+
             // Add Y axis
             const y = d3.scaleBand()
-                .domain(filteredData.map(function(d) { return d.Age; }))
+                .domain(filteredData.map(function (d) { return d.Age; }))
                 .range([0, height])
                 .padding(0.1);
-
-            // Select or append SVG elements for female chart
-            var svgFemale = d3.select("#svgFemale")
-                .attr("width", width)
-                .attr("height", height);
-            var femaleBars = svgFemale.selectAll(".femaleBar")
-                .data(filteredData);
-
-            femaleBars.exit().remove();
-
-            femaleBars.enter()
-                .append("rect")
-                .attr("class", "femaleBar")
-                .merge(femaleBars)
-                .transition()
-                .duration(1000)
-                .attr("x", x(0))
-                .attr("y", function(d) { return y(d.Age); })
-                .attr("width", function(d) { return x(+d.Female); })
-                .attr("height", y.bandwidth())
-                .style("fill", "#435b59");
 
             // Select or append SVG elements for male chart
             var svgMale = d3.select("#svgMale")
@@ -56,29 +35,75 @@ function updateData(year) {
                 .append("rect")
                 .attr("class", "maleBar")
                 .merge(maleBars)
+                .on("mouseover", function (event, d) {
+                    var xPosition = parseFloat(d3.select(this).attr("x"));
+                    var yPosition = parseFloat(d3.select(this).attr("y"));
+                    svgMale.append("text")
+                        .attr("class", "tooltip")
+                        .attr("pointer-events", "none")
+                        .attr("x", xPosition - 20)
+                        .attr("y", yPosition + y.bandwidth() / 2)
+                        .attr("text-anchor", "middle")
+                        .attr("alignment-baseline", "middle")
+                        .attr("font-size", "11px")
+                        .attr("font-weight", "bold")
+                        .text(d.Male);
+                })
+                .on("mouseout", function () {
+                    svgMale.selectAll(".tooltip").remove();
+                    d3.select(this).attr("fill", "#c99e39");
+                })
                 .transition()
                 .duration(1000)
-                .attr("x", function(d) { return width - x(+d.Male); })
-                .attr("y", function(d) { return y(d.Age); })
-                .attr("width", function(d) { return x(+d.Female); })
+                .attr("x", function (d) { return width - x(+d.Male); })
+                .attr("y", function (d) { return y(d.Age); })
+                .attr("width", function (d) { return x(+d.Male); })
                 .attr("height", y.bandwidth())
                 .style("fill", "#c99e39");
+
+            // Select or append SVG elements for female chart
+            var svgFemale = d3.select("#svgFemale")
+                .attr("width", width)
+                .attr("height", height);
+            var femaleBars = svgFemale.selectAll(".femaleBar")
+                .data(filteredData);
+
+            femaleBars.exit().remove();
+
+            femaleBars.enter()
+                .append("rect")
+                .attr("class", "femaleBar")
+                .merge(femaleBars)
+                .on("mouseover", function (event, d) {
+                    var xPosition = parseFloat(d3.select(this).attr("x"));
+                    var yPosition = parseFloat(d3.select(this).attr("y"));
+                    svgFemale.append("text")
+                        .attr("class", "tooltip")
+                        .attr("pointer-events", "none")
+                        .attr("x", xPosition + x(+d.Female) + 20)
+                        .attr("y", yPosition + y.bandwidth() / 2)
+                        .attr("text-anchor", "middle")
+                        .attr("alignment-baseline", "middle")
+                        .attr("font-size", "11px")
+                        .attr("font-weight", "bold")
+                        .text(d.Female);
+                })
+                .on("mouseout", function () {
+                    svgFemale.selectAll(".tooltip").remove();
+                    d3.select(this).attr("fill", "#435b59");
+                })
+                .transition()
+                .duration(1000)
+                .attr("x", x(0))
+                .attr("y", function (d) { return y(d.Age); })
+                .attr("width", function (d) { return x(+d.Female); })
+                .attr("height", y.bandwidth())
+                .style("fill", "#435b59");
 
             // Draw pie chart
             drawPieChart(filteredData);
 
-            // Update X axis for female chart
-            svgFemale.select(".x-axis").remove();
-            svgFemale.append("g")
-                .attr("class", "x-axis")
-                .attr("transform", "translate(0," + height + ")")
-                .call(d3.axisBottom(x))
-                .selectAll("text")
-                .attr("transform", "rotate(-45)")
-                .style("text-anchor", "end");
-
             // Update Y axis for male chart
-            svgMale.select(".y-axis").remove();
             svgMale.append("g")
                 .attr("class", "y-axis")
                 .attr("transform", "translate(" + padding + ",0)")
