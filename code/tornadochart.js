@@ -1,6 +1,8 @@
 var width = 350;
 var height = 300;
 var padding = 100;
+var m_width = 350;
+var f_width = 250;
 
 // Function to update data based on selected year
 function updateData(year) {
@@ -14,7 +16,7 @@ function updateData(year) {
             // Add X axis
             const x = d3.scaleLinear()
                 .domain([0, d3.max(filteredData, function (d) { return Math.max(+d.Female, +d.Male); })])
-                .range([0, width - padding]);
+                .range([0, 300 - padding]);
 
             // Add Y axis
             const y = d3.scaleBand()
@@ -24,7 +26,7 @@ function updateData(year) {
 
             // Select or append SVG elements for male chart
             var svgMale = d3.select("#svgMale")
-                .attr("width", width)
+                .attr("width", m_width)
                 .attr("height", height);
             var maleBars = svgMale.selectAll(".maleBar")
                 .data(filteredData);
@@ -55,7 +57,7 @@ function updateData(year) {
                 })
                 .transition()
                 .duration(1000)
-                .attr("x", function (d) { return width - x(+d.Male); })
+                .attr("x", function (d) { return m_width - x(+d.Male); })
                 .attr("y", function (d) { return y(d.Age); })
                 .attr("width", function (d) { return x(+d.Male); })
                 .attr("height", y.bandwidth())
@@ -63,7 +65,7 @@ function updateData(year) {
 
             // Select or append SVG elements for female chart
             var svgFemale = d3.select("#svgFemale")
-                .attr("width", width)
+                .attr("width", f_width)
                 .attr("height", height);
             var femaleBars = svgFemale.selectAll(".femaleBar")
                 .data(filteredData);
