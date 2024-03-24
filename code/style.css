@@ -214,7 +214,6 @@ footer {
 #tornado-chart {
   float: left;
   width: max-content;
-  margin-right: 2vw;
   background-color: white;
   display: flex;
   justify-content: center;

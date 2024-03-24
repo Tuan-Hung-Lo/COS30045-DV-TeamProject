@@ -14,11 +14,11 @@ const svg = d3.select("#map")
     .attr("height", height);
 
 // Load the GeoJSON data
-d3.json("../csv/us_states.json").then(function (geojson) {
+d3.json("/csv/us_states.json").then(function (geojson) {
     console.log("GeoJSON data loaded:", geojson); // Log GeoJSON data
 
     // Load the dataset
-    d3.csv("../csv/state.csv").then(function (data) {
+    d3.csv("/csv/state.csv").then(function (data) {
         console.log("CSV data loaded:", data); // Log CSV data
         try {
             // Process the data
