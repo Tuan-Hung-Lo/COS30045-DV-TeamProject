@@ -4,6 +4,7 @@ const height = 500;
 
 // Declare yearsData as a global variable
 let yearsData;
+let geojson;
 
 // Define the color scale
 const colorScale = d3.scaleSequential(d3.interpolateBlues);
@@ -50,9 +51,9 @@ function processData(data) {
 
     // Process data for each year
     const yearsData = years.map(year => ({
-        year: +year,
+        year: year,
         values: data.map(d => ({
-            continent: d.Continent, // Assuming the property name is correct
+            state: d.State, // Assuming the property name is correct
             value: parseFloat(d[year].replace(",", ""))
         }))
     }));
@@ -61,8 +62,8 @@ function processData(data) {
 }
 
 // Function to draw the map for a specific year
-function drawMap(yearData, svg, geojson) {
-    console.log("Drawing map with year data:", yearData);
+function drawMap(yearsData, svg, geojson) {
+    console.log("Drawing map with year data:", yearsData);
 
     // Ensure geojson is defined and has features
     if (!geojson || !geojson.features) {
@@ -79,20 +80,19 @@ function drawMap(yearData, svg, geojson) {
         .projection(projection);
 
     // Draw the map
-    svg.selectAll("path").remove(); // Remove existing paths
     svg.selectAll("path")
         .data(geojson.features)
         .enter().append("path")
         .attr("d", path)
         .attr("fill", d => {
             // Find the corresponding value for each feature
-            const value = yearData.values.find(v => v.continent === d.properties.name)?.value;
+            const value = yearsData.values.find(v => v.continent === d.properties.name)?.value;
             return colorScale(value || 0); // Use 0 if value is not found
         })
         .append("title")
         .text(d => {
             // Display the name and value of each feature
-            const value = yearData.values.find(v => v.continent === d.properties.name)?.value || 0;
+            const value = yearsData.values.find(v => v.continent === d.properties.name)?.value || 0;
             return `${d.properties.name}: ${value}`;
         });
 }
@@ -123,5 +123,5 @@ function addLegend(colorScale) {
 function updateData(year) {
     console.log("Updating map for year:", year);
     const index = year - 2018;
-    drawMap(yearsData[index], svg);
+    drawMap(yearsData[index], svg, geojson);
 }
