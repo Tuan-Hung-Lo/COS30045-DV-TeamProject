@@ -6,7 +6,7 @@ var f_width = 250;
 
 // Function to update data based on selected year
 function updateData(year) {
-    d3.csv("/csv/ages.csv")
+    d3.csv("./dataused/ages.csv")
         .then(function (data) {
             // Filter data for the selected year
             var filteredData = data.filter(function (d) {
