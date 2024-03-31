@@ -41,7 +41,7 @@ function updateData(year) {
                     var xPosition = parseFloat(d3.select(this).attr("x"));
                     var yPosition = parseFloat(d3.select(this).attr("y"));
                     svgMale.append("text")
-                        .attr("class", "tooltip")
+                        .attr("class", "tornadotooltip")
                         .attr("pointer-events", "none")
                         .attr("x", xPosition - 20)
                         .attr("y", yPosition + y.bandwidth() / 2)
@@ -52,7 +52,7 @@ function updateData(year) {
                         .text(d.Male);
                 })
                 .on("mouseout", function () {
-                    svgMale.selectAll(".tooltip").remove();
+                    svgMale.selectAll(".tornadotooltip").remove();
                     d3.select(this).attr("fill", "#c99e39");
                 })
                 .transition()
@@ -80,7 +80,7 @@ function updateData(year) {
                     var xPosition = parseFloat(d3.select(this).attr("x"));
                     var yPosition = parseFloat(d3.select(this).attr("y"));
                     svgFemale.append("text")
-                        .attr("class", "tooltip")
+                        .attr("class", "tornadotooltip")
                         .attr("pointer-events", "none")
                         .attr("x", xPosition + x(+d.Female) + 20)
                         .attr("y", yPosition + y.bandwidth() / 2)
@@ -91,7 +91,7 @@ function updateData(year) {
                         .text(d.Female);
                 })
                 .on("mouseout", function () {
-                    svgFemale.selectAll(".tooltip").remove();
+                    svgFemale.selectAll(".tornadotooltip").remove();
                     d3.select(this).attr("fill", "#435b59");
                 })
                 .transition()
