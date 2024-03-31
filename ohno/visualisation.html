@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Data Visualisation - Final Project" />
+    <meta name="keywords" content="HTML, CSS, D3" />
+    <meta name="author" content="Lo Tuan Hung, Luong Chi Duc" />
+
+    <title>Visualisation Page</title>
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+
+    <link rel="stylesheet" href="./style/style.css" />
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li id="navTitle">
+          <h1>US Immigration</h1>
+        </li>
+        <li class="navOpt active">
+          <a href="visualisation.html">Visualisation</a>
+        </li>
+      </ul>
+    </nav>
+    <main>
+      <div>
+        <p class="chart-description">
+          <em>
+            Text for charts descriptions. Please design like this format before
+            I finish the description. Its length should be at least like
+            thissssssssssssssssssssssssssssssss
+            sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+            sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+            sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+          </em>
+        </p>
+      </div>
+      <div class="visualisation">
+        <!-- Left side Heat map -->
+        <div class="LeftSide">
+          <div class="mapTitle">
+            <h2>Heat Map</h2>
+            <p>Text for heat map description</p>
+          </div>
+          <div id="heatmap-container"></div>
+          <!-- This is the container for d3 creating the heat map -->
+          <!-- Filter by year: -->
+          <div class="filter">
+            <div>
+              <label for="year-slider">
+                Year: <span id="year-display"></span>
+              </label>
+              <input
+                type="range"
+                id="year-slider"
+                min="2018"
+                max="2022"
+                value="2022"
+              />
+            </div>
+          </div>
+        </div>
+        <!-- Right Side -->
+        <div class="RightSide">
+          <!-- Pie chart -->
+          <div id="full-pie-chart">
+            <h2>Total % of Male and Female</h2>
+            <div id="pie-chart">
+              <svg id="svgPie"></svg>
+            </div>
+          </div>
+          <!-- Tornado chart -->
+          <div id="full-tornado-chart">
+            <h2></h2>
+            <div id="tornado-chart">
+                <svg id="svgMale"></svg>
+                <svg id="svgFemale"></svg>
+            </div>
+        </div>
+        </div>
+      </div>
+      <!-- <script src="./script/test.js"></script> -->
+      <script src="./script/heatmap.js"></script>
+      <script src="./script/tornadochart.js"></script>
+    </main>
+    <footer>
+      &#169; Copyright 2024 - Swinburne University of Technology - Semester 1
+      2024
+    </footer>
+  </body>
+</html>
