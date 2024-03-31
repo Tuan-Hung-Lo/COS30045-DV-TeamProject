@@ -113,21 +113,39 @@ function updateData(year) {
                 .selectAll("text")
                 .style("text-anchor", "end");
 
+            var chartHeading = document.querySelector("#full-tornado-chart h3");
+            if (chartHeading) {
+                chartHeading.textContent = "Comparison of the total immigrants by gender in " + year;
+            }
+
+            // Update chart description
+            updateChartDescription(year);
         })
         .catch(function (error) {
             console.error("Error loading data:", error);
         });
 }
 
+// Function to update chart description
+function updateChartDescription(year) {
+    var chartDescription = document.querySelector(".chart-description em");
+    if (chartDescription) {
+        chartDescription.textContent = "This page provides a detailed glimpse into immigration demographics across age groups and genders of " + year + ", enabling viewers to discern trends and disparities in migration patterns.";
+    }
+}
+
 // Function to draw pie chart
 function drawPieChart(data) {
+    // Clear existing pie chart
+    d3.select("#svgPie").selectAll("*").remove();
+
     var totalMale = d3.sum(data, function (d) { return +d.Male; });
     var totalFemale = d3.sum(data, function (d) { return +d.Female; });
     var total = totalMale + totalFemale;
 
     var pieData = [
-        { gender: totalMale + " (" + ((totalMale / total) * 100).toFixed(2) + "%)", count: totalMale },
-        { gender: totalFemale + " (" + ((totalFemale / total) * 100).toFixed(2) + "%)", count: totalFemale }
+        { gender: "Male", percent: ((totalMale / total) * 100).toFixed(2), count: totalMale },
+        { gender: "Female", percent: ((totalFemale / total) * 100).toFixed(2), count: totalFemale }
     ];
 
     var radius = Math.min(width, height) / 2;
@@ -160,9 +178,13 @@ function drawPieChart(data) {
         .style("fill", function (d) { return color(d.data.gender); });
 
     g.append("text")
-        .attr("transform", function (d) { return "translate(" + arc.centroid(d) + ")"; })
+        .attr("transform", function (d) {
+            var centroid = arc.centroid(d);
+            return "translate(" + centroid[0] + "," + centroid[1] + ")";
+        })
         .attr("dy", ".35em")
-        .text(function (d) { return d.data.gender; });
+        .attr("text-anchor", "middle")
+        .text(function (d) { return d.data.percent + "%"; });
 }
 
 // Initial call to updateData with the default year (2022)

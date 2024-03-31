@@ -199,14 +199,12 @@ footer {
 
 #svgFemale {
   float: right;
-  width: fit-content;
   margin-top: 2em;
   background-color: white;
 }
 
 #svgMale {
   float: left;
-  width: fit-content;
   margin-top: 2em;
   background-color: white;
 }
