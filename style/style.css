@@ -1,0 +1,412 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #e1eae7;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  margin-bottom: 12vh;
+}
+
+/* Navigation bar */
+
+nav {
+  background-color: #435b59;
+  color: white;
+  padding: 0 1.5rem;
+}
+
+nav ul {
+  list-style: none;
+  overflow: hidden;
+  background-color: #435b59;
+}
+
+#navTitle > h1 {
+  float: left;
+  background-color: #435b59;
+  padding: 0.45rem 0.5rem;
+  font-size: 2rem;
+}
+
+.navOpt {
+  float: right;
+  margin-left: 1rem;
+  display: flex;
+  background-color: #435b59;
+  align-items: center;
+}
+
+.active,
+.active img,
+.active a {
+  background-color: #e1eae7 !important;
+  color: #435b59 !important;
+}
+
+.navOpt img {
+  width: auto;
+  height: 30px;
+  background-color: #435b59;
+  padding-left: 0.5rem;
+}
+
+.navOpt a {
+  color: white;
+  text-decoration: none;
+  background-color: #435b59;
+  padding: 0.5rem 0.5rem;
+  margin: 0.5rem 0.5rem;
+  font-size: 1.25rem;
+}
+
+/* Footer */
+
+footer {
+  background-color: #435b59;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  bottom: 0;
+  width: 100%;
+  font-style: italic;
+  margin-top: auto;
+}
+
+/* Home Page */
+.homeTitle {
+  font-size: 1.5rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.homeTitle img {
+  width: 100px;
+  height: auto;
+}
+
+.topic {
+  background-color: #c99e39;
+  max-width: 40vw;
+  width: 100%;
+  margin: 2rem auto;
+  padding: 0.5rem 1rem;
+  border-radius: 15px;
+  box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.4);
+}
+
+.topic p {
+  background-color: #c99e39;
+  color: white;
+}
+
+.topic h2 {
+  background-color: #c99e39;
+  color: white;
+  text-align: center;
+}
+
+#homegrid {
+  display: grid;
+  grid-template-rows: 1fr;
+  gap: 0px 0px;
+  grid-template-areas: "i1 i2 i3";
+  justify-items: center;
+  margin: auto 25vw;
+}
+
+.i1 {
+  grid-area: i1;
+}
+.i2 {
+  grid-area: i2;
+}
+.i3 {
+  grid-area: i3;
+}
+
+.home-grid-item {
+  background-color: #435b59;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 15px;
+  box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.4);
+  width: fit-content;
+}
+
+.home-grid-item h3,
+.home-grid-item p,
+.project-description p,
+.project-description h3 {
+  background-color: #435b59;
+}
+
+.project-description {
+  background-color: #435b59;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 15px;
+  box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.4);
+  max-width: 40vw;
+  width: 100%;
+  margin: 2rem auto;
+  overflow-wrap: break-word;
+}
+
+/*Chart Description*/
+.chart-description {
+  text-align: center;
+  color: #435b59;
+  max-width: 60vw;
+  width: 100%;
+  overflow: wrap;
+  margin: 2em auto;
+}
+
+/* Tool tip */
+.tooltip {
+  position: absolute;
+  opacity: 0;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 5px;}
+
+.tooltipName {
+  font-weight: bold;
+  background-color: white;
+
+}
+
+/* Map Page */
+.visualisation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 2rem auto;
+}
+
+.LeftSide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 2rem auto;
+  float: left;
+  padding: 1.5rem;
+  border-radius: 15px;
+  box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.4);
+  background-color: white;
+  width: 900px;
+}
+
+.mapTitle {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  margin-bottom: 0.5rem;
+}
+
+.mapTitle h2, .mapTitle p {
+  background-color: white;
+}
+
+#heatmap-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 15px;
+  padding: 1rem;
+}
+
+#heatmap-container svg{
+  border-radius: 15px;
+}
+
+.maplegend {
+  border-radius: 0px !important;
+  
+}
+
+.filter {
+  margin-top: 1.5rem;
+  background-color: white;
+}
+
+.filter div,  .filter div label {
+  background-color: white;
+}
+
+#year-display strong {
+  background-color: white;
+}
+
+.filter div input {
+  background-color: white;
+  width: 300px;
+  margin-left: 1rem;
+}
+
+path.Country {
+  cursor: pointer;
+}
+
+/* Pie chart and Tornado chart */
+#full-pie-chart, #tornado-chart, #full-tornado-chart svg {
+  background-color: white;
+}
+
+#full-pie-chart h2, #full-pie-chart svg {
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#full-tornado-chart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: white;
+}
+
+#full-tornado-chart h2 {
+  background-color: white;
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#tornado-chart {
+  margin-top: 1rem;
+}
+
+/*Tornado chart Page*/
+#yearButtons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2em auto;
+}
+
+#yearButtons button {
+  background-color: #435b59;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 15px;
+  box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.4);
+  margin: 0 1rem;
+  font-size: 1.25rem;
+  border: none;
+  cursor: pointer;
+}
+
+#yearButtons button:hover {
+  background-color: #c99e39;
+}
+
+#svgFemale {
+  float: right;
+  margin-top: 2em;
+  background-color: white;
+}
+
+#svgMale {
+  float: left;
+  margin-top: 2em;
+  background-color: white;
+}
+
+#tornado-chart {
+  float: left;
+  width: max-content;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  height: 350px;
+}
+
+#full-tornado-chart {
+  display: flex;
+  width: fit-content;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 2em 1em;
+  padding: 0.5rem 1rem;
+  border-radius: 15px;
+  box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.4);
+  background-color: white;
+}
+
+#full-tornado-chart h3,
+#full-tornado-chart p {
+  background-color: white;
+}
+
+#pie-chart {
+  float: right;
+  width: max-content;
+  margin-left: 2vw;
+  background-color: white;
+  height: 350px;
+}
+
+#svgPie {
+  margin-top: 2em;
+  background-color: white;
+}
+
+#full-pie-chart {
+  display: flex;
+  justify-content: center;
+  width: fit-content;
+  align-items: center;
+  flex-direction: column;
+  margin: 2em 1em;
+  padding: 0.5rem 1rem;
+  border-radius: 15px;
+  box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.4);
+  background-color: white;
+}
+
+#full-pie-chart h3,
+#full-pie-chart p {
+  background-color: white;
+}
+
+.maleRect {
+  fill: #c99e39;
+}
+
+.femaleRect {
+  width: 10px;
+  height: 10px;
+  fill: #435b59;
+}
+
+.charts {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2em auto;
+}
