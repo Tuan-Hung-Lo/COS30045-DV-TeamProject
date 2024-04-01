@@ -60,7 +60,7 @@ function updateData(year) {
             .attr("y", yPosition + y.bandwidth() / 2)
             .attr("text-anchor", "middle")
             .attr("alignment-baseline", "middle")
-            .attr("font-size", "11px")
+            .attr("font-size", "12px")
             .attr("font-weight", "bold")
             .text(d.Male);
         })
@@ -107,7 +107,7 @@ function updateData(year) {
             .attr("y", yPosition + y.bandwidth() / 2)
             .attr("text-anchor", "middle")
             .attr("alignment-baseline", "middle")
-            .attr("font-size", "11px")
+            .attr("font-size", "12px")
             .attr("font-weight", "bold")
             .text(d.Female);
         })
@@ -134,9 +134,10 @@ function updateData(year) {
       svgMale
         .append("g")
         .attr("class", "y-axis")
-        .attr("transform", "translate(" + padding + ",0)")
+        .attr("transform", "translate(" + (padding + 10) + ",0)")
         .call(d3.axisLeft(y))
         .selectAll("text")
+        .style("font-size", "12px")
         .style("text-anchor", "end");
 
       var chartHeading = document.querySelector("#full-tornado-chart h3");
@@ -240,6 +241,9 @@ function drawPieChart(data) {
     })
     .attr("dy", ".35em")
     .attr("text-anchor", "middle")
+    .style("fill", "white")
+    .style("font-size", "18px")
+    .style("font-weight", "500")
     .text(function (d) {
       return d.data.percent + "%";
     });

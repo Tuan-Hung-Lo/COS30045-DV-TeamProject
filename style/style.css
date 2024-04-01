@@ -203,7 +203,6 @@ footer {
   align-items: center;
   flex-direction: column;
   margin: 2rem auto;
-  float: left;
   padding: 1.5rem;
   border-radius: 15px;
   box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.4);
@@ -337,7 +336,7 @@ path.Country {
 }
 
 #tornado-chart {
-  float: left;
+  float: right;
   width: max-content;
   background-color: white;
   display: flex;
@@ -364,7 +363,7 @@ path.Country {
 }
 
 #pie-chart {
-  float: right;
+  float: left;
   width: max-content;
   margin-left: 2vw;
   background-color: white;
