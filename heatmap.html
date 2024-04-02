@@ -1,80 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Data Visualisation - Final Project" />
-    <meta name="keywords" content="HTML, CSS, D3" />
-    <meta name="author" content="Lo Tuan Hung, Luong Chi Duc" />
 
-    <title>Visualisation Page</title>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Data Visualisation - Final Project" />
+  <meta name="keywords" content="HTML, CSS, D3" />
+  <meta name="author" content="Lo Tuan Hung, Luong Chi Duc" />
 
-    <script src="https://d3js.org/d3.v7.min.js"></script>
+  <title>Visualisation Page</title>
 
-    <link rel="stylesheet" href="./style/style.css" />
-  </head>
-  <body>
-    <nav>
-      <ul>
-        <li id="navTitle">
-          <h1>US Immigration</h1>
-        </li>
-        <li class="navOpt">
-          <img src="./images/tornadochart.png" alt="tornadochart" /><a
-            href="tornadochart.html"
-            >Tornado Chart</a
-          >
-        </li>
-        <li class="navOpt active">
-          <img src="./images/map.png" alt="map" /><a href="heatmap.html">Map</a>
-        </li>
-        <li class="navOpt">
-          <img src="./images/home.png" alt="home" /><a href="index.html"
-            >Home</a
-          >
-        </li>
-      </ul>
-    </nav>
-    <main>
-      <div>
-        <p class="chart-description">
-          <em>
-            The heat map would illustrate the state-specific immigration during the period of 5 years from 2018 to 2022. The darker the color, the higher the number of immigrants.
-          </em>
-        </p>
-      </div>
-      <div class="visualisation">
-        <!-- Left side Heat map -->
-        <div class="LeftSide">
-          <div class="mapTitle">
-            <h2>USA Overview</h2>
-            <p>Scroll your mouse to zoom the map</p>
-          </div>
-          <div id="heatmap-container"></div>
-          <!-- This is the container for d3 creating the heat map -->
-          <!-- Filter by year: -->
-          <div class="filter">
-            <div>
-              <label for="year-slider">
-                Year: <span id="year-display"></span>
-              </label>
-              <input
-                type="range"
-                id="year-slider"
-                min="2018"
-                max="2022"
-                value="2022"
-              />
-            </div>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+
+  <link rel="stylesheet" href="./style/style.css" />
+</head>
+
+<body>
+  <nav>
+    <ul>
+      <li id="navTitle">
+        <h1>US Immigration</h1>
+      </li>
+      <li class="navOpt">
+        <img src="./images/tornadochart.png" alt="tornadochart" /><a href="tornadochart.html">Tornado Chart</a>
+      </li>
+      <li class="navOpt active">
+        <img src="./images/map.png" alt="map" /><a href="heatmap.html">Map</a>
+      </li>
+      <li class="navOpt">
+        <img src="./images/home.png" alt="home" /><a href="index.html">Home</a>
+      </li>
+    </ul>
+  </nav>
+  <main>
+    <div>
+      <p class="chart-description">
+        <em>
+          The heat map would illustrate the state-specific immigration during the period of 5 years from 2018 to 2022.
+          The darker the color, the higher the number of immigrants.
+        </em>
+      </p>
+    </div>
+    <div class="visualisation">
+      <!-- Left side Heat map -->
+      <div class="LeftSide">
+        <div class="mapTitle">
+          <h2>USA Overview</h2>
+          <p>Scroll your mouse to zoom the map</p>
+        </div>
+        <div id="heatmap-container"></div>
+        <!-- This is the container for d3 creating the heat map -->
+        <!-- Filter by year: -->
+        <div class="filter">
+          <div>
+            <label for="year-slider">
+              Year: <span id="year-display"></span>
+            </label>
+            <input type="range" id="year-slider" min="2018" max="2022" value="2022" />
           </div>
         </div>
       </div>
-      <!-- <script src="./script/test.js"></script> -->
-      <script src="./script/heatmap.js"></script>
-    </main>
-    <footer>
-      &#169; Copyright 2024 - Swinburne University of Technology - Semester 1
-      2024
-    </footer>
-  </body>
+    </div>
+    <!-- <script src="./script/test.js"></script> -->
+    <script src="./script/heatmap.js"></script>
+  </main>
+  <footer>
+    &#169; Copyright 2024 - Swinburne University of Technology - Semester 1
+    2024
+  </footer>
+</body>
+
 </html>

@@ -66,7 +66,6 @@ function updateData(year) {
         })
         .on("mouseout", function () {
           svgMale.selectAll(".tornadotooltip").remove();
-          d3.select(this).attr("fill", "#c99e39");
         })
         .transition()
         .duration(1000)
@@ -170,6 +169,7 @@ function drawPieChart(data) {
   // Clear existing pie chart
   d3.select("#svgPie").selectAll("*").remove();
 
+  // Calculate total number of males and females
   var totalMale = d3.sum(data, function (d) {
     return +d.Male;
   });
@@ -178,6 +178,7 @@ function drawPieChart(data) {
   });
   var total = totalMale + totalFemale;
 
+  // Prepare data for the pie chart
   var pieData = [
     {
       gender: "Male",
@@ -191,8 +192,8 @@ function drawPieChart(data) {
     },
   ];
 
+  // Set up dimensions and color scale
   var radius = Math.min(width, height) / 2;
-
   var color = d3
     .scaleOrdinal()
     .domain(
@@ -202,11 +203,8 @@ function drawPieChart(data) {
     )
     .range(["#c99e39", "#435b59"]);
 
-  var arc = d3
-    .arc()
-    .outerRadius(radius - 10)
-    .innerRadius(0);
-
+  // Define arc and pie functions
+  var arc = d3.arc().outerRadius(radius - 10).innerRadius(0);
   var pie = d3
     .pie()
     .sort(null)
@@ -214,6 +212,7 @@ function drawPieChart(data) {
       return d.count;
     });
 
+  // Create SVG element for pie chart
   var svgPie = d3
     .select("#svgPie")
     .attr("width", width)
@@ -221,6 +220,7 @@ function drawPieChart(data) {
     .append("g")
     .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
+  // Append arcs for each data element
   var g = svgPie
     .selectAll(".arc")
     .data(pie(pieData))
@@ -228,12 +228,14 @@ function drawPieChart(data) {
     .append("g")
     .attr("class", "arc");
 
+  // Append paths for arcs
   g.append("path")
     .attr("d", arc)
     .style("fill", function (d) {
       return color(d.data.gender);
     });
 
+  // Append text labels for percentages
   g.append("text")
     .attr("transform", function (d) {
       var centroid = arc.centroid(d);
@@ -248,7 +250,7 @@ function drawPieChart(data) {
       return d.data.percent + "%";
     });
 
-  // Adding Legend
+  // Adding legend
   var legend = svgPie
     .selectAll(".legend")
     .data(color.domain())
@@ -259,6 +261,7 @@ function drawPieChart(data) {
       return "translate(20," + (i * 20 - height / 2 + 10) + ")";
     });
 
+  // Append legend rectangles
   legend
     .append("rect")
     .attr("x", (width - 50) / 2 - 18)
@@ -266,6 +269,7 @@ function drawPieChart(data) {
     .attr("height", 18)
     .style("fill", color);
 
+  // Append legend labels
   legend
     .append("text")
     .attr("x", (width - 50) / 2 - 24)
@@ -278,4 +282,6 @@ function drawPieChart(data) {
 }
 
 // Initial call to updateData with the default year (2022)
-updateData(2022);
+window.onload = function () {
+  updateData(2022);
+};
