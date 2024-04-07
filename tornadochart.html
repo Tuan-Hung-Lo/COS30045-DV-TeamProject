@@ -1,68 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <!-- Define document metadata -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Data Visualisation - Final Project" />
+    <meta name="keywords" content="HTML, CSS, D3" />
+    <meta name="author" content="Lo Tuan Hung, Luong Chi Duc" />
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Data Visualisation - Final Project">
-    <meta name="keywords" content="HTML, CSS, D3">
-    <meta name="author" content="Lo Tuan Hung, Luong Chi Duc">
-
+    <!-- Set the title of the page -->
     <title>Tornado Chart</title>
 
+    <!-- Include D3.js library -->
     <script src="https://d3js.org/d3.v7.min.js"></script>
-    <link rel="stylesheet" href="./style/style.css">
-</head>
+    <!-- Link to external CSS stylesheet -->
+    <link rel="stylesheet" href="./style/style.css" />
+  </head>
 
-<body>
+  <body>
+    <!-- Navigation bar -->
     <nav>
-        <ul>
-            <li id="navTitle">
-                <h1>US Immigration</h1>
-            </li>
-            <li class="navOpt active">
-                <img src="./images/tornadochart.png" alt="tornadochart"><a href="tornadochart.html">Tornado Chart</a>
-            </li>
-            <li class="navOpt">
-                <img src="./images/map.png" alt="map"><a href="heatmap.html">Map</a>
-            </li>
-            <li class="navOpt">
-                <img src="./images/home.png" alt="home"><a href="index.html">Home</a>
-            </li>
-        </ul>
+      <ul>
+        <!-- Logo and title -->
+        <li id="navTitle">
+          <h1>US Immigration</h1>
+        </li>
+        <!-- Navigation options -->
+        <li class="navOpt active">
+          <!-- Image and link to Tornado Chart page (current page) -->
+          <img src="./images/tornadochart.png" alt="tornadochart" /><a
+            href="tornadochart.html"
+            >Demographic</a
+          >
+        </li>
+        <li class="navOpt">
+          <!-- Image and link to Map page -->
+          <img src="./images/map.png" alt="map" /><a href="heatmap.html">Overview</a>
+        </li>
+        <li class="navOpt">
+          <!-- Image and link to Home page -->
+          <img src="./images/home.png" alt="home" /><a href="index.html"
+            >Home</a
+          >
+        </li>
+      </ul>
     </nav>
+    <!-- Main content area -->
     <main>
-        <p class="chart-description">
-            <em>
-
-            </em>
-        </p>
-        <div id="yearButtons">
-            <button class="year-button" onclick="updateData(2018)">2018</button>
-            <button class="year-button" onclick="updateData(2019)">2019</button>
-            <button class="year-button" onclick="updateData(2020)">2020</button>
-            <button class="year-button" onclick="updateData(2021)">2021</button>
-            <button class="year-button" onclick="updateData(2022)">2022</button>
+      <!-- Description of the chart -->
+      <p class="chart-description">
+        <em> </em>
+      </p>
+      <!-- Year selection buttons -->
+      <div id="yearButtons">
+        <button class="year-button" onclick="updateData(2018)">2018</button>
+        <button class="year-button" onclick="updateData(2019)">2019</button>
+        <button class="year-button" onclick="updateData(2020)">2020</button>
+        <button class="year-button" onclick="updateData(2021)">2021</button>
+        <button class="year-button" onclick="updateData(2022)">2022</button>
+      </div>
+      <!-- Charts section -->
+      <div class="charts">
+        <!-- Full pie chart -->
+        <div id="full-pie-chart">
+          <!-- Title of the pie chart -->
+          <h3>Total % of Male and Female</h3>
+          <!-- Container for the pie chart -->
+          <div id="pie-chart">
+            <!-- SVG element for the pie chart -->
+            <svg id="svgPie"></svg>
+          </div>
         </div>
-        <div class="charts">
-            <div id="full-pie-chart">
-                <h3>Total % of Male and Female</h3>
-                <div id="pie-chart">
-                    <svg id="svgPie"></svg>
-                </div>
-            </div>
-            <div id="full-tornado-chart">
-                <h3></h3>
-                <div id="tornado-chart">
-                    <svg id="svgMale"></svg>
-                    <svg id="svgFemale"></svg>
-                </div>
-            </div>
+        <!-- Full tornado chart -->
+        <div id="full-tornado-chart">
+          <!-- Title of the tornado chart -->
+          <h3></h3>
+          <!-- Container for the tornado chart -->
+          <div id="tornado-chart">
+            <!-- SVG elements for male and female tornado charts -->
+            <svg id="svgMale"></svg>
+            <svg id="svgFemale"></svg>
+          </div>
         </div>
+      </div>
 
-        <script src="./script/tornadochart.js"></script>
+      <!-- Include JavaScript file for tornado chart -->
+      <script src="./script/tornadochart.js"></script>
     </main>
-    <footer>&#169; Copyright 2024 - Swinburne University of Technology - Semester 1 2024</footer>
-</body>
-
+    <!-- Footer section -->
+    <footer>
+      <!-- Copyright information -->
+      &#169; Copyright 2024 - Swinburne University of Technology - Semester 1
+      2024
+    </footer>
+  </body>
 </html>

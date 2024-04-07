@@ -1,76 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <!-- Define document metadata -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Data Visualisation - Final Project" />
+    <meta name="keywords" content="HTML, CSS, D3" />
+    <meta name="author" content="Lo Tuan Hung, Luong Chi Duc" />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Data Visualisation - Final Project" />
-  <meta name="keywords" content="HTML, CSS, D3" />
-  <meta name="author" content="Lo Tuan Hung, Luong Chi Duc" />
+    <!-- Set the title of the page -->
+    <title>Home Page</title>
 
-  <title>Home Page</title>
+    <!-- Include D3.js library -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <!-- Include custom JavaScript file -->
+    <script src="javascript.js"></script>
 
-  <script src="https://d3js.org/d3.v7.min.js"></script>
-  <script src="javascript.js"></script>
+    <!-- Link to external CSS stylesheet -->
+    <link rel="stylesheet" href="./style/style.css" />
+  </head>
 
-  <link rel="stylesheet" href="./style/style.css" />
-</head>
-
-<body>
-  <nav>
-    <ul>
-      <li id="navTitle">
-        <h1>US Immigration</h1>
-      </li>
-      <li class="navOpt">
-        <img src="./images/tornadochart.png" alt="tornadochart" /><a href="tornadochart.html">Tornado Chart</a>
-      </li>
-      <li class="navOpt">
-        <img src="./images/map.png" alt="map" /><a href="heatmap.html">Map</a>
-      </li>
-      <li class="navOpt active">
-        <img src="./images/home.png" alt="home" /><a href="index.html">Home</a>
-      </li>
-    </ul>
-  </nav>
-  <main>
-    <div class="homeTitle">
-      <h1>
-        <img src="./images/uni.png" alt="unilogo" /> Welcome to our
-        visualisation page!
-      </h1>
-    </div>
-    <div class="topic">
-      <p>Topic</p>
-      <h2>Migration flow of the U.S from 2018 to 2022</h2>
-    </div>
-    <div id="homegrid">
-      <div class="home-grid-item i1" style="text-align: center">
-        <p>Team Name</p>
-        <h3>HuDu</h3>
+  <body>
+    <!-- Navigation bar -->
+    <nav>
+      <ul>
+        <!-- Logo and title -->
+        <li id="navTitle">
+          <h1>US Immigration</h1>
+        </li>
+        <!-- Navigation options -->
+        <li class="navOpt">
+          <!-- Image and link to Tornado Chart page -->
+          <img src="./images/tornadochart.png" alt="tornadochart" /><a
+            href="tornadochart.html"
+            >Demographic</a
+          >
+        </li>
+        <li class="navOpt">
+          <!-- Image and link to Map page -->
+          <img src="./images/map.png" alt="map" /><a href="heatmap.html">Overview</a>
+        </li>
+        <li class="navOpt active">
+          <!-- Image and link to Home page (current page) -->
+          <img src="./images/home.png" alt="home" /><a href="index.html"
+            >Home</a
+          >
+        </li>
+      </ul>
+    </nav>
+    <!-- Main content area -->
+    <main>
+      <!-- Welcome message -->
+      <div class="homeTitle">
+        <h1>
+          <!-- University logo and welcome message -->
+          <img src="./images/uni.png" alt="unilogo" /> Welcome to our
+          visualisation page!
+        </h1>
       </div>
-      <div class="home-grid-item i2">
-        <p>s103842425</p>
-        <h3>&emsp; Tuan Hung Lo</h3>
+      <!-- Topic section -->
+      <div class="topic">
+        <p>Topic</p>
+        <!-- Description of the migration flow topic -->
+        <h2>Migration flow of the U.S from 2018 to 2022</h2>
       </div>
-      <div class="home-grid-item i3">
-        <p>s104181721</p>
-        <h3>&emsp; Chi Duc Luong</h3>
+      <!-- Team information -->
+      <div id="homegrid">
+        <!-- Team name -->
+        <div class="home-grid-item i1" style="text-align: center">
+          <p>Team Name</p>
+          <h3>HuDu</h3>
+        </div>
+        <!-- Team member 1 -->
+        <div class="home-grid-item i2">
+          <p>s103842425</p>
+          <h3>&emsp; Tuan Hung Lo</h3>
+        </div>
+        <!-- Team member 2 -->
+        <div class="home-grid-item i3">
+          <p>s104181721</p>
+          <h3>&emsp; Chi Duc Luong</h3>
+        </div>
       </div>
-    </div>
-    <div class="project-description">
-      <p>Project Description</p>
-      <h3>&emsp; The project aims to visually represent migration trends in the United States from 2018 to 2022,
-        including the impact of COVID-19. It seeks to provide insights into state-specific immigration, and changes in
-        immigrant demographics over five years. By addressing these questions, the project aims to fill information
-        gaps, offer perspectives on migration factors, and inspire inclusive policies acknowledging immigrants'
-        contributions to American culture.</h3>
-    </div>
-  </main>
-  <footer>
-    &#169; Copyright 2024 - Swinburne University of Technology - Semester 1
-    2024
-  </footer>
-</body>
-
+      <!-- Project description -->
+      <div class="project-description">
+        <p>Project Description</p>
+        <!-- Detailed description of the project -->
+        <h3>
+          &emsp; The project aims to visually represent migration trends in the
+          United States from 2018 to 2022, including the impact of COVID-19. It
+          seeks to provide insights into state-specific immigration, and changes
+          in immigrant demographics over five years. By addressing these
+          questions, the project aims to fill information gaps, offer
+          perspectives on migration factors, and inspire inclusive policies
+          acknowledging immigrants' contributions to American culture.
+        </h3>
+      </div>
+    </main>
+    <!-- Footer section -->
+    <footer>
+      <!-- Copyright information -->
+      &#169; Copyright 2024 - Swinburne University of Technology - Semester 1
+      2024
+    </footer>
+  </body>
 </html>
